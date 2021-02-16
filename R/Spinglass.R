@@ -89,9 +89,9 @@ NetworkCommunity <- function (networkeco, run = 100)
     SpinglassCommunities[i,ncol(SpinglassCommunities)] <- max(spinglassTest$membership)
   }
   for (i in 1:nrow(SpinglassCommunities)) {
-    comvec <- unname(as.factor(SpinglassCommunities[i,-ncol(SpinglassCommunities)]))
-    ord <- c(unique(comvec))
-    ord <- as.list(ord)
+    comvec <- as.numeric(SpinglassCommunities[i,-ncol(SpinglassCommunities)])
+    comvec <- as.factor(comvec)
+    ord <-  as.list(unique(comvec))
     names(ord) <- as.character(1:length(ord))
     levels(comvec) <- ord
     SpinglassCommunities[i,-ncol(SpinglassCommunities)] <- as.numeric(comvec)
